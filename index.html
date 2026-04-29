@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>UmojaServ — Get your business online in 48 hours</title>
+<meta name="description" content="We build your website, connect your customers, and automate your business. Live in 48 hours." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #FAFAF7;
+    --surface: #FFFFFF;
+    --ink: #0A0A0A;
+    --ink-soft: #4A4A48;
+    --ink-mute: #8A8A86;
+    --line: rgba(10, 10, 10, 0.08);
+    --line-strong: rgba(10, 10, 10, 0.16);
+    --accent: #C84B1E; /* warm terracotta — quiet nod to East African earth tones */
+    --max: 1120px;
+    --gutter: clamp(20px, 4vw, 40px);
+    --section-y: clamp(80px, 12vw, 140px);
+  }
+
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body {
+    font-family: 'Inter Tight', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.5;
+    font-size: 16px;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+
+  .display { font-family: 'Fraunces', serif; font-weight: 400; letter-spacing: -0.02em; }
+  .eyebrow {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink-mute);
+    font-weight: 500;
+  }
+
+  .container { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+  /* ---------- NAV ---------- */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(250, 250, 247, 0.85);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 16px var(--gutter);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .nav-links a { transition: color 0.2s ease; }
+  .nav-links a:hover { color: var(--ink); }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 22px;
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--bg);
+  }
+  .btn-primary:hover { background: #1f1f1f; }
+  .btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    padding: 11px 0;
+  }
+  .btn-ghost:hover { color: var(--accent); }
+  .btn-light {
+    background: var(--surface);
+    color: var(--ink);
+  }
+  .btn-light:hover { background: #f0f0ed; }
+
+  .nav-mobile { display: none; }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    padding: clamp(80px, 14vw, 160px) 0 clamp(60px, 10vw, 120px);
+    text-align: center;
+  }
+  .hero .eyebrow { margin-bottom: 24px; display: inline-block; }
+  .hero-h1 {
+    font-size: clamp(44px, 7.2vw, 88px);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+    max-width: 14ch;
+    margin: 0 auto 28px;
+    font-weight: 300;
+  }
+  .hero-h1 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+  .hero-sub {
+    font-size: clamp(16px, 1.4vw, 19px);
+    color: var(--ink-soft);
+    max-width: 38ch;
+    margin: 0 auto 40px;
+    line-height: 1.45;
+  }
+  .hero-ctas {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-mark {
+    margin-top: clamp(60px, 9vw, 100px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    color: var(--ink-mute);
+  }
+  .hero-mark-line {
+    width: 1px;
+    height: 48px;
+    background: var(--line-strong);
+  }
+  .hero-mark-text {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+  }
+
+  /* ---------- WHAT WE DO ---------- */
+  .section { padding: var(--section-y) 0; }
+  .section-head { text-align: center; margin-bottom: clamp(48px, 7vw, 80px); }
+  .section-head .eyebrow { display: inline-block; margin-bottom: 16px; }
+  .section-h2 {
+    font-size: clamp(32px, 4.4vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    font-weight: 300;
+    max-width: 18ch;
+    margin: 0 auto;
+  }
+
+  .triad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .triad-cell {
+    background: var(--bg);
+    padding: clamp(40px, 5vw, 64px) clamp(24px, 3vw, 40px);
+    transition: background 0.3s ease;
+  }
+  .triad-cell:hover { background: var(--surface); }
+  .triad-num {
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    color: var(--ink-mute);
+    margin-bottom: 32px;
+    letter-spacing: 0.02em;
+  }
+  .triad-title {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(24px, 2.6vw, 32px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+  .triad-text {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    max-width: 28ch;
+  }
+
+  /* ---------- PRODUCT / PRICING ---------- */
+  .product {
+    background: var(--ink);
+    color: var(--bg);
+    padding: var(--section-y) 0;
+  }
+  .product .eyebrow { color: rgba(255, 255, 255, 0.55); }
+  .product .section-h2 { color: var(--bg); }
+  .product-card {
+    max-width: 480px;
+    margin: clamp(48px, 6vw, 72px) auto 0;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    padding: clamp(32px, 4vw, 44px);
+  }
+  .product-name {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+  .product-price {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+  .product-price-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(255, 255, 255, 0.55);
+  }
+  .product-price-value {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(48px, 6vw, 64px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .product-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .product-price-from {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.55);
+  }
+  .product-includes {
+    list-style: none;
+    margin-bottom: 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .product-includes li {
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: rgba(255, 255, 255, 0.85);
+  }
+  .product-includes li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .product-card .btn {
+    width: 100%;
+  }
+
+  /* ---------- PROOF ---------- */
+  .proof-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .proof-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 36px 24px;
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+  }
+  .proof-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--line-strong);
+  }
+  .proof-name {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+  }
+  .proof-cat {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink-mute);
+  }
+
+  /* ---------- MISSION (UNCHANGED COPY) ---------- */
+  .mission {
+    background: var(--surface);
+    padding: var(--section-y) 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .mission-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+  .mission .eyebrow { display: block; margin-bottom: 24px; }
+  .mission-h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+    font-weight: 300;
+    margin-bottom: 48px;
+  }
+  .mission-h2 em { font-style: italic; color: var(--accent); }
+  .mission-body p {
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+    max-width: 56ch;
+  }
+  .mission-body strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .mission-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 64px;
+    padding-top: 48px;
+    border-top: 1px solid var(--line);
+  }
+  .pillar-num {
+    font-family: 'Fraunces', serif;
+    font-size: 13px;
+    color: var(--ink-mute);
+    margin-bottom: 16px;
+  }
+  .pillar-title {
+    font-family: 'Fraunces', serif;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+  }
+  .pillar-text {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+
+  /* ---------- HOW IT WORKS ---------- */
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(24px, 4vw, 56px);
+    max-width: 880px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .how-step { text-align: center; position: relative; }
+  .how-num {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(48px, 6vw, 72px);
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 24px;
+    letter-spacing: -0.03em;
+  }
+  .how-num em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .how-text {
+    font-size: 16px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    max-width: 22ch;
+    margin: 0 auto;
+  }
+
+  /* ---------- FINAL CTA ---------- */
+  .final {
+    background: var(--ink);
+    color: var(--bg);
+    padding: clamp(100px, 14vw, 160px) 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .final-h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(40px, 6vw, 80px);
+    line-height: 1;
+    letter-spacing: -0.035em;
+    font-weight: 300;
+    max-width: 14ch;
+    margin: 0 auto 48px;
+  }
+  .final-h2 em { font-style: italic; color: var(--accent); }
+  .final-ctas {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .final .btn-ghost { color: rgba(255, 255, 255, 0.65); }
+  .final .btn-ghost:hover { color: var(--bg); }
+
+  /* ---------- CONTACT ---------- */
+  .contact {
+    padding: clamp(64px, 9vw, 96px) 0;
+    text-align: center;
+  }
+  .contact .eyebrow { display: inline-block; margin-bottom: 24px; }
+  .contact-grid {
+    display: flex;
+    justify-content: center;
+    gap: clamp(32px, 6vw, 80px);
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .contact-item {
+    text-align: center;
+  }
+  .contact-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink-mute);
+    margin-bottom: 8px;
+  }
+  .contact-value {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(18px, 2vw, 22px);
+    color: var(--ink);
+    transition: color 0.2s ease;
+    letter-spacing: -0.005em;
+  }
+  .contact-value:hover { color: var(--accent); }
+
+  /* ---------- FOOTER ---------- */
+  .footer {
+    border-top: 1px solid var(--line);
+    padding: 32px 0;
+    font-size: 12px;
+    color: var(--ink-mute);
+  }
+  .footer-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-region {
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+
+  /* ---------- ANIMATIONS ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 800px) {
+    .nav-links a:not(.btn) { display: none; }
+
+    .triad {
+      grid-template-columns: 1fr;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .triad-cell {
+      border-bottom: 1px solid var(--line);
+      padding: 40px 4px;
+    }
+    .triad-cell:last-child { border-bottom: none; }
+    .triad-num { margin-bottom: 20px; }
+
+    .proof-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .mission-pillars {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .how-grid {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .how-num { font-size: 48px; margin-bottom: 12px; }
+
+    .contact-grid { flex-direction: column; gap: 24px; }
+
+    .footer-inner { justify-content: center; text-align: center; }
+
+    .hero-ctas, .final-ctas { flex-direction: column; width: 100%; max-width: 280px; margin: 0 auto; }
+    .hero-ctas .btn, .final-ctas .btn { width: 100%; }
+  }
+
+  @media (max-width: 500px) {
+    .nav-inner { padding: 14px var(--gutter); }
+    .logo { font-size: 18px; }
+    .nav-links .btn { padding: 9px 16px; font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="logo">UmojaServ</a>
+    <div class="nav-links">
+      <a href="#what">What we do</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+      <a href="#start" class="btn btn-primary">Get Started</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <span class="eyebrow reveal">Now in Africa</span>
+    <h1 class="hero-h1 display reveal" style="transition-delay: 80ms;">
+      Get your business online <em>in 48 hours.</em>
+    </h1>
+    <p class="hero-sub reveal" style="transition-delay: 160ms;">
+      We build your website, connect your customers, and automate your business.
+    </p>
+    <div class="hero-ctas reveal" style="transition-delay: 240ms;">
+      <a href="#start" class="btn btn-primary">Get Started</a>
+      <a href="https://wa.me/255778337298" target="_blank" rel="noopener" class="btn btn-ghost">Chat on WhatsApp →</a>
+    </div>
+
+    <div class="hero-mark reveal" style="transition-delay: 400ms;">
+      <span class="hero-mark-line"></span>
+      <span class="hero-mark-text">Tanzania · Kenya</span>
+    </div>
+  </div>
+</header>
+
+<!-- WHAT WE DO -->
+<section class="section" id="what">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">What we do</span>
+      <h2 class="section-h2 display">Three things. <em style="color: var(--accent); font-style: italic;">Done well.</em></h2>
+    </div>
+  </div>
+  <div class="triad reveal">
+    <div class="triad-cell">
+      <div class="triad-num">01</div>
+      <h3 class="triad-title">Build</h3>
+      <p class="triad-text">We create your business website.</p>
+    </div>
+    <div class="triad-cell">
+      <div class="triad-num">02</div>
+      <h3 class="triad-title">Connect</h3>
+      <p class="triad-text">We link WhatsApp, Google Maps, and customer flow.</p>
+    </div>
+    <div class="triad-cell">
+      <div class="triad-num">03</div>
+      <h3 class="triad-title">Automate</h3>
+      <p class="triad-text">We track orders and customers using Google tools.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT / PRICING -->
+<section class="product" id="pricing">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">One core product</span>
+      <h2 class="section-h2 display">Everything you need to go live.</h2>
+    </div>
+    <div class="product-card reveal">
+      <div class="product-name">UmojaServ Starter</div>
+      <div class="product-price">
+        <div>
+          <div class="product-price-label">Starting from</div>
+          <div class="product-price-row">
+            <span class="product-price-value">$100</span>
+          </div>
+        </div>
+      </div>
+      <ul class="product-includes">
+        <li>Landing page</li>
+        <li>Google Sheets integration</li>
+        <li>Google Apps Script automation</li>
+        <li>Google Maps</li>
+        <li>WhatsApp integration</li>
+        <li>Basic updates</li>
+      </ul>
+      <a href="#start" class="btn btn-light">Get Started</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Proof</span>
+      <h2 class="section-h2 display">Built for <em style="color: var(--accent); font-style: italic;">real businesses.</em></h2>
+    </div>
+    <div class="proof-grid reveal">
+      <div class="proof-card">
+        <div class="proof-name">Showtime</div>
+        <div class="proof-cat">Transportation</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-name">Get It Fresh</div>
+        <div class="proof-cat">Groceries</div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-name">BN1on1</div>
+        <div class="proof-cat">Coaching</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION (COPY UNCHANGED) -->
+<section class="mission" id="mission">
+  <div class="mission-inner">
+    <span class="eyebrow reveal">Our Mission</span>
+    <h2 class="mission-h2 reveal">Built in Africa. <em>For Africa.</em></h2>
+    <div class="mission-body">
+      <p class="reveal"><strong>UmojaServ</strong> — from <em>umoja</em>, the Swahili word for unity. We bring small businesses and the digital world together. Quietly. Beautifully. On purpose.</p>
+      <p class="reveal">We grew up watching our parents, our aunts, our neighbors run extraordinary businesses with their hands.</p>
+      <p class="reveal">The tailor who knew every customer's measurements by memory. The salon owner who remembered every birthday. The mechanic who could diagnose an engine by sound alone.</p>
+      <p class="reveal">Brilliance, everywhere. And almost none of it visible online.</p>
+      <p class="reveal"><strong>We believe the next decade of African commerce belongs to the businesses that show up where their customers already are — on their phones.</strong> Not with bloated software built for Silicon Valley. With tools simple enough to use on the busiest day, powerful enough to change everything by the end of the month.</p>
+      <p class="reveal">That's why we built UmojaServ. Not to teach business owners technology. To make technology quietly serve them.</p>
+    </div>
+    <div class="mission-pillars">
+      <div class="reveal">
+        <div class="pillar-num">01</div>
+        <h4 class="pillar-title">Simple by design.</h4>
+        <p class="pillar-text">If your grandmother can't use it, we redesigned it.</p>
+      </div>
+      <div class="reveal" style="transition-delay: 100ms;">
+        <div class="pillar-num">02</div>
+        <h4 class="pillar-title">Local by default.</h4>
+        <p class="pillar-text">Built for the networks, languages, and rhythms of East Africa.</p>
+      </div>
+      <div class="reveal" style="transition-delay: 200ms;">
+        <div class="pillar-num">03</div>
+        <h4 class="pillar-title">Yours forever.</h4>
+        <p class="pillar-text">Your data. Your customers. Your business. Always.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">How it works</span>
+      <h2 class="section-h2 display">Three steps. <em style="color: var(--accent); font-style: italic;">That's it.</em></h2>
+    </div>
+    <div class="how-grid">
+      <div class="how-step reveal">
+        <div class="how-num">01</div>
+        <p class="how-text">Tell us about your business.</p>
+      </div>
+      <div class="how-step reveal" style="transition-delay: 120ms;">
+        <div class="how-num">02</div>
+        <p class="how-text">We build your system.</p>
+      </div>
+      <div class="how-step reveal" style="transition-delay: 240ms;">
+        <div class="how-num">03</div>
+        <p class="how-text">You go live.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final" id="start">
+  <div class="container">
+    <h2 class="final-h2 reveal">Start your digital business <em>today.</em></h2>
+    <div class="final-ctas reveal" style="transition-delay: 120ms;">
+      <a href="https://wa.me/255778337298" target="_blank" rel="noopener" class="btn btn-light">Get Started</a>
+      <a href="https://wa.me/255778337298" target="_blank" rel="noopener" class="btn btn-ghost">Chat on WhatsApp →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <span class="eyebrow reveal">Get in touch</span>
+    <div class="contact-grid reveal" style="transition-delay: 100ms;">
+      <div class="contact-item">
+        <div class="contact-label">WhatsApp</div>
+        <a href="https://wa.me/255778337298" target="_blank" rel="noopener" class="contact-value">+255 778 337 298</a>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label">Email</div>
+        <a href="mailto:bngie@umojaserv.com" class="contact-value">bngie@umojaserv.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div>© <span id="year">2026</span> UmojaServ</div>
+    <div class="footer-region">Tanzania · Kenya · East Africa</div>
+  </div>
+</footer>
+
+<script>
+  // Smooth reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  // Auto-reveal hero immediately
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.hero .reveal').forEach((el) => el.classList.add('visible'));
+  });
+
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
